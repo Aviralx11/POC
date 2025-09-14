@@ -1,0 +1,4 @@
+#root {
+  /* Ensure the root element can be full width */
+  width: 100%;
+}
