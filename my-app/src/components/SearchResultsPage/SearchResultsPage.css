@@ -1,170 +1,17 @@
+/* This file now only styles the page container and the loading message. */
+/* All card-specific styles have been moved to TrainCard.css. */
+
 .search-results-page {
   padding: 20px 5%;
-  
-  background-color: #f0f2f5; 
+  background-color: #f0f2f5; /* A light gray background for the page */
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-
-.loading, .no-trains {
+.loading {
   text-align: center;
-  font-size: 18px;
-  color: #fff; 
-  margin-top: 50px;
-}
-
-.train-card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.train-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  background-color: #f5f5f5;
-  padding: 15px 20px;
-  border-bottom: 1px solid #e0e0e0;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-
-.train-name {
-  font-size: 18px;
-  font-weight: bold;
-  grid-column: 1;
-}
-
-.train-name span {
-  font-weight: normal;
-  color: #555;
-}
-
-.runs-on {
-  font-size: 14px;
-  color: #555;
-  grid-column: 2;
-  text-align: center;
-}
-
-.train-schedule-link {
-  color: #007bff;
-  text-decoration: none;
-  font-weight: bold;
-  grid-column: 3;
-  text-align: right;
-}
-
-.train-body {
-  padding: 20px;
-}
-
-.train-timing {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.time-details {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.time-details span {
-  font-weight: normal;
-  color: #777;
-}
-
-.duration {
-  color: #777;
-  text-align: center;
-}
-
-.availability-dates {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  overflow-x: auto;
-}
-
-.date-item {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px 12px;
-  text-align: center;
-  cursor: pointer;
-  background-color: #f9f9f9;
-}
-
-.date-item.selected {
-  border-color: #007bff;
-  background-color: #e7f3ff;
-}
-
-.date-day {
-  font-size: 14px;
-}
-
-.date-status {
-  font-size: 12px;
-  color: green;
-  font-weight: bold;
-}
-
-.book-now-section {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.book-now-btn {
-  background-color: #fb641b;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.book-now-btn.disabled {
-  background-color: #f5a67b;
-  cursor: not-allowed;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.train-classes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.class-item {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  text-align: center;
-  min-width: 120px;
-}
-
-.class-name {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.class-status {
-  font-size: 12px;
-  color: #007bff;
-  cursor: pointer;
+  font-size: 22px;
+  color: #555; /* A darker color for better readability on a light background */
+  margin-top: 100px;
+  font-weight: 500;
 }

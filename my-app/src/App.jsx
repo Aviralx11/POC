@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import BookTicketPage from './components/BookTicketPage/BookTicketPage';
-import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'; // Import the new page
+import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage';
+import NoTrainsFoundPage from './components/NoTrainsFoundPage/NoTrainsFoundPage'; // Imported the new page
 import './App.css';
 
 const PrivateRoute = ({ children }) => {
@@ -18,7 +19,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />} />
+        <Route 
+          path="/login" 
+          element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />} 
+        />
         <Route 
           path="/" 
           element={<PrivateRoute><HomePage /></PrivateRoute>} 
@@ -30,6 +34,10 @@ function App() {
         <Route 
           path="/search-results" 
           element={<PrivateRoute><SearchResultsPage /></PrivateRoute>} 
+        />
+        <Route 
+          path="/no-trains" 
+          element={<PrivateRoute><NoTrainsFoundPage /></PrivateRoute>} 
         />
       </Routes>
     </Router>

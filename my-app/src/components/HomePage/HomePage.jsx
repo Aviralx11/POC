@@ -38,11 +38,11 @@ MY PRIDE
           </div>
           <ul className="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About Us ▾</a></li>
-            <li><a href="#">Travel ▾</a></li>
-            <li className="active"><a href="#">Fare & Ticketing ▾</a></li>
-            <li><a href="#">Customer Service ▾</a></li>
-            <li><a href="#">How To Use ▾</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Travel</a></li>
+            <li className="active"><a href="#">Fare & Ticketing</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">How To Use</a></li>
             <li><a href="#">My Account</a></li>
             <li><a href="#">Contact Us</a></li>
           </ul>

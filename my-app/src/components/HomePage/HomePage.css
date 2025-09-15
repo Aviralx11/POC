@@ -1,7 +1,7 @@
-
+/* General Body Style */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     color: #333;
 }
 
@@ -22,6 +22,8 @@ body {
     align-items: center;
     font-size: 14px;
     color: #555;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .contact-info span {
@@ -34,52 +36,69 @@ body {
     color: #555;
 }
 
-/* Main Navigation Styles */
+/* Main Navigation Styles - THIS IS WHERE THE FIX IS */
 .main-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* This pushes the logo and nav links to opposite ends */
+    align-items: center; /* This vertically aligns everything in the middle */
     margin-top: 10px;
+    padding: 10px 0;
 }
 
 .logo {
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically align the logo image and its text */
 }
 
 .logo img {
-    height: 60px;
+    height: 40px; /* Adjusted size for better alignment */
+    margin-right: 15px; /* Add space between logo and text */
 }
 
 .logo-text {
-    margin-left: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     line-height: 1.2;
+    color: #333;
 }
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 30px; /* Use gap for consistent spacing between nav items */
 }
 
-.nav-links li {
-    margin-left: 25px;
-    font-weight: bold;
-}
+
 
 .nav-links a {
     text-decoration: none;
     color: #333;
+    font-weight: 500;
     padding-bottom: 5px;
+    white-space: nowrap; /* Prevent text like "My Account" from wrapping */
 }
 
 .nav-links .active a {
     color: #007bff;
     border-bottom: 3px solid #007bff;
 }
+
+/* Dropdown arrows from the screenshot */
+.nav-links a[href="#"]::after {
+    content: ' ▾'; /* Add the dropdown arrow */
+    font-size: 12px;
+}
+
+/* Remove arrow for links that don't have it */
+.nav-links li:first-child a::after,
+.nav-links li:last-child a::after,
+.nav-links li:nth-last-child(2) a::after {
+    content: '';
+}
+
 
 /* Hero Section Styles */
 .hero-section {
@@ -90,7 +109,7 @@ body {
 
 .hero-image {
     width: 100%;
-    height: 350px;
+    height: 400px; /* Increased height for a more impactful look */
     object-fit: cover;
     filter: brightness(0.6);
 }
@@ -111,15 +130,15 @@ body {
     font-size: 16px;
 }
 
-
+/* Main Content Styles */
 .main-content {
     padding: 40px 10%;
-    background-color: #fff; 
+    background-color: #fff;
 }
 
 .main-content h2 {
     font-size: 28px;
-    color: #333; 
+    color: #333;
     position: relative;
     display: inline-block;
     margin-bottom: 10px;
@@ -144,7 +163,7 @@ body {
 .main-content p {
     font-size: 16px;
     line-height: 1.6;
-    color: #666; 
+    color: #666;
 }
 
 .fare-section {
