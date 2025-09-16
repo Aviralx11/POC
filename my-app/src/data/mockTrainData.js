@@ -146,9 +146,9 @@ export const fetchMockTrains = (searchCriteria) => {
       if (searchCriteria.from.toLowerCase() === 'secunderabad' && searchCriteria.to.toLowerCase() === 'vijayawada') {
         resolve({ trains: mockTrains });
       } else {
-        // Simulate no trains found for other routes
+        // no trains found for other routes
         resolve({ trains: [] });
       }
-    }, 500); // Simulate network delay
+    }, 500); // for real time delay
   });
 };

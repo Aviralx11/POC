@@ -8,11 +8,14 @@ import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage'
 import NoTrainsFoundPage from './components/NoTrainsFoundPage/NoTrainsFoundPage'; // Imported the new page
 import './App.css';
 
+
+// to check if user is authenticated
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
+//if user aint logged in, they are sent back to login
 function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 

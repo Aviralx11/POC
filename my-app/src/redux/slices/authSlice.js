@@ -9,9 +9,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
-      state.isAuthenticated = true;
-      state.user = action.payload;
+    loginSuccess: (state, action) => {  // two functions
+      state.isAuthenticated = true; // this fn will run, updating state inside redux store
+      state.user = action.payload; //redux automatically notifies all parts of app that are subscribed, that state has changed
     },
     logout: (state) => {
       state.isAuthenticated = false;

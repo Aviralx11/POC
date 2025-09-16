@@ -15,11 +15,17 @@ const LoginPage = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  //to send reducer action to redux store
   const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
     e.preventDefault(); // do not refresh
+
+    // to validate mb no digits
+    if (!/^\d{10}$/.test(mobileNo)) {
+    setError('Mobile number must be exactly 10 digits.');
+    return;
+    }
     
     if (name === MOCK_USER.name && mobileNo === MOCK_USER.mobileNo && password === MOCK_USER.password) {
       setError('');
