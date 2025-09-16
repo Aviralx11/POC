@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import './TrainCard.css';
 
+
+// functional component that recieves train object as prop
 const TrainCard = ({ train }) => {
-  // State to track the index of the selected item (date or class)
-  // We initialize it to null, meaning nothing is selected.
+  // State to track the index of the item which we have selected
+  // We initialize it to null
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  // Handler for when a user clicks on a date or class item
+  // Handler for when a user clicks on an item
   const handleSelect = (index) => {
     setSelectedIndex(index);
   };
 
-  // Determine if the "Book Now" button should be enabled.
-  // It's enabled if an item has been selected (i.e., selectedIndex is not null).
+  
   const isBookNowEnabled = selectedIndex !== null;
 
   return (
@@ -34,17 +35,17 @@ const TrainCard = ({ train }) => {
           </div>
         </div>
 
-        {/* Conditional Rendering: Check if the train has multi-day availability */}
+        {/* Conditional Rendering*/}
         {train.availability.length > 0 ? (
-          // UI for trains WITH multi-day availability (e.g., GARIBRATH EXP)
+          // only for garibrath exp
           <div>
             <div className="availability-dates">
               {train.availability.map((avail, index) => (
                 <div 
                   key={index} 
-                  // Dynamically add 'selected' class if this item's index matches the state
+                  // add selected class name if item index matches state
                   className={`date-item ${selectedIndex === index ? 'selected' : ''}`}
-                  // Call the handler function on click, passing this item's index
+                  // Calling the handler function on click, passing this item's index
                   onClick={() => handleSelect(index)}
                 >
                   <div className="date-day">{avail.date}</div>
@@ -53,7 +54,6 @@ const TrainCard = ({ train }) => {
               ))}
             </div>
             <div className="book-now-section">
-              {/* The button is enabled/disabled based on our state variable */}
               <button className="book-now-btn" disabled={!isBookNowEnabled}>
                 Book Now
               </button>
@@ -61,15 +61,13 @@ const TrainCard = ({ train }) => {
             </div>
           </div>
         ) : (
-          // UI for trains WITHOUT multi-day availability (e.g., SIMHAPURI EXP)
+          // UI for other trains
           <div>
             <div className="train-classes">
               {train.classes.map((cls, index) => (
                 <div 
                   key={index} 
-                  // Same logic: add 'selected' class if this item is selected
                   className={`class-item ${selectedIndex === index ? 'selected' : ''}`}
-                  // Same handler function works here too
                   onClick={() => handleSelect(index)}
                 >
                   <div className="class-name">{cls.name}</div>
@@ -78,7 +76,6 @@ const TrainCard = ({ train }) => {
               ))}
             </div>
             <div className="book-now-section">
-              {/* The button is enabled/disabled based on our state variable */}
               <button className="book-now-btn" disabled={!isBookNowEnabled}>
                 Book Now
               </button>
