@@ -5,7 +5,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import HomePage from './components/HomePage/HomePage';
 import BookTicketPage from './components/BookTicketPage/BookTicketPage';
 import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage';
-import NoTrainsFoundPage from './components/NoTrainsFoundPage/NoTrainsFoundPage'; // Imported the new page
+import NoTrainsFoundPage from './components/NoTrainsFoundPage/NoTrainsFoundPage';
 import './App.css';
 
 
