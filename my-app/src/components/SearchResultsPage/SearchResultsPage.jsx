@@ -25,7 +25,7 @@ const SearchResultsPage = () => {
         });
     } else {
       setLoading(false);
-      navigate('/book-ticket'); 
+      navigate('/no-trains', { replace: true }); 
     }
   }, [searchCriteria, navigate]);
 

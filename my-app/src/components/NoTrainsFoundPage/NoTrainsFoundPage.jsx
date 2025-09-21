@@ -6,7 +6,7 @@ const NoTrainsFoundPage = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/book-ticket');
+     navigate('/book-ticket', { replace: true });
   };
 
   return (

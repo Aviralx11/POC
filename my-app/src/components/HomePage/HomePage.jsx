@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'; // 1. Import useDispatch
+import { logout } from '../../redux/slices/authSlice'; // 2. Import the logout action
 import './HomePage.css';
 
 import railwayLogo from '../../assets/railway-logo.jpg';
@@ -7,9 +9,16 @@ import heroTrainImage from '../../assets/hero-train.jpg';
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // 3. Initialize dispatch
 
   const handleBookTicketClick = () => {
     navigate('/book-ticket');
+  };
+
+  // 4. Create the handleLogout function
+  const handleLogout = () => {
+    dispatch(logout());
+    // No need to navigate, the PrivateRoute will automatically redirect to /login
   };
 
   return (
@@ -24,19 +33,19 @@ const HomePage = () => {
           <div className="top-right-nav">
             <a href="#">Media</a>
             <a href="#">Download Mobile App</a>
+            {/* 5. Add the Logout button */}
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>
         </div>
         <nav className="main-nav">
           <div className="logo">
-          
             <img src={railwayLogo} alt="Railway Logo" />
             <div className="logo-text">
-              MY CITY  
-MY METRO  
-MY PRIDE
+              MY CITY MY METRO MY PRIDE
             </div>
           </div>
           <ul className="nav-links">
+            {/* I've removed the dropdown classes for clarity, you can add them back if needed */}
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Travel</a></li>
@@ -49,9 +58,7 @@ MY PRIDE
         </nav>
       </header>
 
-     
       <section className="hero-section">
-      
         <img 
           src={heroTrainImage} 
           alt="Indian train on a scenic route" 
@@ -63,7 +70,6 @@ MY PRIDE
         </div>
       </section>
 
-    
       <main className="main-content">
         <h2>Ticketing</h2>
         <h3>Fare Information</h3>

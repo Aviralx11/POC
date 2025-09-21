@@ -192,3 +192,21 @@ body {
     color: #fff;
     background-color: #28a745;
 }
+
+.logout-btn {
+  background-color: #dc3545; /* A distinct red color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 15px; /* Space it out from the other links */
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+

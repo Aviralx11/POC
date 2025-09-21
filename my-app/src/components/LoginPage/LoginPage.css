@@ -84,3 +84,25 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
+
+
+
+.form-group {
+  position: relative; /* Needed for positioning the error message */
+  margin-bottom: 25px; /* Increase margin to make space for the error message */
+}
+
+.error-message {
+  color: #dc3545; /* A standard red for errors */
+  font-size: 13px;
+  margin: 5px 0 0 0; /* Adjust margin for spacing */
+  padding: 0;
+  text-align: left;
+}
+
+/* Style for the general form error (e.g., "Invalid credentials") */
+.form-error {
+  text-align: center;
+  margin-top: 15px;
+}
+
