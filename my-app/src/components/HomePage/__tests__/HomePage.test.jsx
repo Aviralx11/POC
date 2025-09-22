@@ -23,12 +23,12 @@ vi.mock('../../assets/hero-train.jpg', () => ({ default: 'hero-train.jpg' }));
 
 const mockStore = configureStore([]);
 
-// --- The Tests ---
+
 
 describe('HomePage Component', () => {
   let store;
 
-  // This will now be recognized by the linter
+  
   beforeEach(() => {
     store = mockStore({
       auth: { isAuthenticated: true, user: { name: 'Test User' } },

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import BookTicketPage from '../BookTicketPage';
 
-// --- Mocking Dependencies ---
+
 const mockedNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -15,7 +15,7 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-// --- The Tests ---
+
 
 describe('BookTicketPage Component', () => {
   beforeEach(() => {
@@ -37,12 +37,12 @@ describe('BookTicketPage Component', () => {
 
     const today = new Date().toISOString().split('T')[0];
     
-    // --- THIS IS THE FIX ---
-    // Use a more specific selector to find the label that is exactly "Date"
+    
+    
     expect(screen.getByLabelText(/^date$/i)).toHaveValue(today);
   });
 
-  // ... (the rest of the test file remains exactly the same) ...
+  
 
   it('should allow the user to type in the "From" and "To" fields', () => {
     render(

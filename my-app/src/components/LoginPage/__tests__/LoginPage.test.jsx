@@ -7,8 +7,7 @@ import configureStore from 'redux-mock-store';
 
 import LoginPage from '../LoginPage';
 
-// --- Mocking Dependencies ---
-// This component depends on both useNavigate and useDispatch (via Redux)
+
 const mockedNavigate = vi.fn();
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -18,17 +17,17 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-// Setup for a fake Redux store
+
 const mockStore = configureStore([]);
 
-// --- The Tests ---
+
 
 describe('LoginPage Component', () => {
   let store;
 
   // Before each test, create a fresh mock store and clear our spies
   beforeEach(() => {
-    store = mockStore({}); // Start with an empty store
+    store = mockStore({}); 
     mockedNavigate.mockClear();
     store.clearActions();
   });
@@ -65,7 +64,7 @@ describe('LoginPage Component', () => {
     const loginButton = screen.getByRole('button', { name: /login/i });
     fireEvent.click(loginButton);
 
-    // Assert: Check that the required error messages appear
+    
     // We use `findByText` because the state update is asynchronous
     expect(await screen.findByText('Name is required.')).toBeInTheDocument();
     expect(await screen.findByText('Mobile number is required.')).toBeInTheDocument();
@@ -82,7 +81,7 @@ describe('LoginPage Component', () => {
       </Provider>
     );
 
-    // Act: Fill in the form with an invalid mobile number
+    
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Test User' } });
     fireEvent.change(screen.getByLabelText(/mobile no/i), { target: { value: '123' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
@@ -102,7 +101,7 @@ describe('LoginPage Component', () => {
       </Provider>
     );
 
-    // Act: Fill in the form with an invalid password
+    
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Test User' } });
     fireEvent.change(screen.getByLabelText(/mobile no/i), { target: { value: '1234567890' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'weak' } });
@@ -122,7 +121,7 @@ describe('LoginPage Component', () => {
       </Provider>
     );
 
-    // Act: Fill in the form with incorrect (but validly formatted) credentials
+    
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Wrong User' } });
     fireEvent.change(screen.getByLabelText(/mobile no/i), { target: { value: '1234567890' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
@@ -142,7 +141,7 @@ describe('LoginPage Component', () => {
       </Provider>
     );
 
-    // Act: Fill in the form with the correct MOCK_USER credentials
+    
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'Test User' } });
     fireEvent.change(screen.getByLabelText(/mobile no/i), { target: { value: '1234567890' } });
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
