@@ -33,7 +33,7 @@ const HomePage = () => {
           <div className="top-right-nav">
             <a href="#">Media</a>
             <a href="#">Download Mobile App</a>
-            {/* 5. Add the Logout button */}
+          
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </div>
         </div>
@@ -45,7 +45,7 @@ const HomePage = () => {
             </div>
           </div>
           <ul className="nav-links">
-            {/* I've removed the dropdown classes for clarity, you can add them back if needed */}
+
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Travel</a></li>

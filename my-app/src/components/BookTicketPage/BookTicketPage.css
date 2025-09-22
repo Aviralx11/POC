@@ -86,15 +86,15 @@
 }
 
 .book-ticket-page {
-  position: relative; /* This is needed to position the button correctly */
-  padding-top: 60px; /* Add some padding to the top to make space for the button */
+  position: relative; 
+  padding-top: 60px; 
 }
 
 .back-to-home-btn {
   position: absolute;
   top: 20px;
-  left: 1%; /* Align with the page padding */
-  background-color: #6c757d; /* A neutral gray color */
+  left: 1%;
+  background-color: #6c757d; 
   color: white;
   border: none;
   border-radius: 5px;

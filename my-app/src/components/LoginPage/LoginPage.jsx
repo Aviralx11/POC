@@ -50,13 +50,13 @@ const LoginPage = () => {
       return;
     }
     
-    // If validation passes, proceed to check credentials
+    // If validation passes
     if (name === MOCK_USER.name && mobileNo === MOCK_USER.mobileNo && password === MOCK_USER.password) {
-      setErrors({}); // Clear any previous "Invalid credentials" error
+      setErrors({}); 
       dispatch(loginSuccess({ name: MOCK_USER.name }));
       navigate('/'); 
     } else {
-      // Set a general error for invalid credentials
+      // general
       setErrors({ form: 'Invalid credentials. Please try again.' });
     }
   };
@@ -72,9 +72,9 @@ const LoginPage = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            // The 'required' attribute is removed
+            
           />
-          {/* Display error message if it exists for this field */}
+          
           {errors.name && <p className="error-message">{errors.name}</p>}
         </div>
         <div className="form-group">
@@ -84,7 +84,7 @@ const LoginPage = () => {
             id="mobileNo"
             value={mobileNo}
             onChange={(e) => setMobileNo(e.target.value)}
-            // The 'required' attribute is removed
+           
           />
           {errors.mobileNo && <p className="error-message">{errors.mobileNo}</p>}
         </div>
@@ -95,12 +95,12 @@ const LoginPage = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            // The 'required' attribute is removed
+            
           />
           {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
         <button type="submit" className="login-button">Login</button>
-        {/* Display the general form error */}
+        
         {errors.form && <p className="error-message form-error">{errors.form}</p>}
       </form>
     </div>

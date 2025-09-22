@@ -19,26 +19,26 @@ const BookTicketPage = () => {
     navigate('/search-results', { state: { searchCriteria } });
   };
 
-  // --- START: NEW FUNCTION FOR BACK BUTTON ---
+  
   const handleGoHome = () => {
     navigate('/'); // Navigate to the Home Page
   };
-  // --- END: NEW FUNCTION ---
+  
 
   return (
     <div className="book-ticket-page">
-      {/* --- START: NEW BACK TO HOME BUTTON --- */}
+      
       <button className="back-to-home-btn" onClick={handleGoHome}>
         &larr; Back to Home
       </button>
-      {/* --- END: NEW BACK TO HOME BUTTON --- */}
+      
 
       <div className="booking-container">
         <div className="booking-header">
           <h2>BOOK TICKET</h2>
         </div>
         <form className="booking-form" onSubmit={handleSearch}>
-          {/* ... (the rest of the form JSX remains exactly the same) ... */}
+          
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="from">From</label>
