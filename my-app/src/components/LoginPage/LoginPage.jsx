@@ -1,63 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { loginSuccess } from '../../redux/slices/authSlice';
+import { loginUser } from '../../utils/userService';
 import './LoginPage.css';
 
-const MOCK_USER = {
-  name: 'Test User',
-  mobileNo: '1234567890',
-  password: 'Password123@',
-};
-
 const LoginPage = () => {
+  // 1. Add the 'name' state variable back
   const [name, setName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Use an object to hold errors for each field
-  const [errors, setErrors] = useState({}); 
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
+  // 2. Update the validation function to include the 'name' field
   const validateForm = () => {
     const newErrors = {};
-
-    // Check for empty fields first
-    if (!name) newErrors.name = 'Name is required.';
+    if (!name) newErrors.name = 'Name is required.'; // Add check for name
     if (!mobileNo) newErrors.mobileNo = 'Mobile number is required.';
     if (!password) newErrors.password = 'Password is required.';
-
-    // If fields are not empty, then check for format validity
-    if (mobileNo && !/^\d{10}$/.test(mobileNo)) {
-      newErrors.mobileNo = 'Mobile number must be exactly 10 digits.';
-    }
-    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-    if (password && !passwordRegex.test(password)) {
-      newErrors.password = 'Password must be at least 6 characters, with one uppercase, one number, and one special character.';
-    }
-
     setErrors(newErrors);
-    // Return true if there are no errors, false otherwise
     return Object.keys(newErrors).length === 0;
   };
 
+  // The handleLogin function remains the same, as 'name' is not used for authentication
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // Run validation. If it fails, stop the function.
     if (!validateForm()) {
       return;
     }
-    
-    // If validation passes
-    if (name === MOCK_USER.name && mobileNo === MOCK_USER.mobileNo && password === MOCK_USER.password) {
-      setErrors({}); 
-      dispatch(loginSuccess({ name: MOCK_USER.name }));
-      navigate('/'); 
+
+    const user = loginUser({ mobileNo, password });
+
+    if (user) {
+      setErrors({});
+      dispatch(loginSuccess({ name: user.name }));
+      navigate('/');
     } else {
-      // general
-      setErrors({ form: 'Invalid credentials. Please try again.' });
+      setErrors({ form: 'Invalid mobile number or password.' });
     }
   };
 
@@ -65,6 +55,10 @@ const LoginPage = () => {
     <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Login</h2>
+
+        {successMessage && <p className="success-message">{successMessage}</p>}
+
+        {/* 3. Add the JSX for the Name input field back into the form */}
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -72,11 +66,10 @@ const LoginPage = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            
           />
-          
           {errors.name && <p className="error-message">{errors.name}</p>}
         </div>
+
         <div className="form-group">
           <label htmlFor="mobileNo">Mobile No</label>
           <input
@@ -84,7 +77,6 @@ const LoginPage = () => {
             id="mobileNo"
             value={mobileNo}
             onChange={(e) => setMobileNo(e.target.value)}
-           
           />
           {errors.mobileNo && <p className="error-message">{errors.mobileNo}</p>}
         </div>
@@ -95,13 +87,16 @@ const LoginPage = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            
           />
           {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
         <button type="submit" className="login-button">Login</button>
-        
+
         {errors.form && <p className="error-message form-error">{errors.form}</p>}
+
+        <div className="register-link">
+          <p>Don't have an account? <Link to="/register">Create one</Link></p>
+        </div>
       </form>
     </div>
   );

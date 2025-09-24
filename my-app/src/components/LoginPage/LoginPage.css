@@ -106,3 +106,28 @@ body {
   margin-top: 15px;
 }
 
+.register-link {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+
+.success-message {
+  color: #28a745; /* Green */
+  background-color: #e9f7ef;
+  border: 1px solid #a6d9b8;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}

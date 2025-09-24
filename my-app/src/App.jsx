@@ -6,6 +6,7 @@ import HomePage from './components/HomePage/HomePage';
 import BookTicketPage from './components/BookTicketPage/BookTicketPage';
 import SearchResultsPage from './components/SearchResultsPage/SearchResultsPage';
 import NoTrainsFoundPage from './components/NoTrainsFoundPage/NoTrainsFoundPage';
+import RegistrationPage from './components/RegistrationPage/RegistrationPage'; 
 import './App.css';
 
 
@@ -22,6 +23,10 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route 
+          path="/register" 
+          element={isAuthenticated ? <Navigate to="/" /> : <RegistrationPage />} 
+        />
         <Route 
           path="/login" 
           element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />} 
