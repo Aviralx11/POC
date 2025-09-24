@@ -35,7 +35,7 @@ const TrainCard = ({ train }) => {
           </div>
         </div>
 
-        {/* Conditional Rendering*/}
+        
         {train.availability.length > 0 ? (
           // only for garibrath exp
           <div>
@@ -43,9 +43,9 @@ const TrainCard = ({ train }) => {
               {train.availability.map((avail, index) => (
                 <div 
                   key={index} 
-                  // add selected class name if item index matches state
+              
                   className={`date-item ${selectedIndex === index ? 'selected' : ''}`}
-                  // Calling the handler function on click, passing this item's index
+                  // Calling the handler function on click
                   onClick={() => handleSelect(index)}
                 >
                   <div className="date-day">{avail.date}</div>
