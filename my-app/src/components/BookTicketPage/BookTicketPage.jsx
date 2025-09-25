@@ -21,7 +21,7 @@ const BookTicketPage = () => {
 
   
   const handleGoHome = () => {
-    navigate('/'); // Navigate to the Home Page
+    navigate('/'); 
   };
   
 

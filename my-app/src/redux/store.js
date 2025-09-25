@@ -1,6 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // dweb
+import storage from 'redux-persist/lib/storage';
 
 import authReducer from './slices/authSlice';
 
@@ -8,7 +8,7 @@ import authReducer from './slices/authSlice';
 const persistConfig = {
   key: 'root', 
   storage,     
-  whitelist: ['auth'] // We only want to persist the 'auth' slice of our state
+  whitelist: ['auth'] // only the auth credentials
 };
 
 //could combine
@@ -17,16 +17,16 @@ const rootReducer = combineReducers({
   
 });
 
-// Create a persisted reducer
+// reducer with persist
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configure the store with the persisted reducer
+
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        //ignoring
+        // not useful
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),

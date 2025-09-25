@@ -36,16 +36,16 @@ const RegistrationPage = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      return; // Stop if validation fails
+      return; 
     }
 
     const result = registerUser({ name, mobileNo, password });
 
     if (result.success) {
-      // On successful registration, navigate to the login page with a success message
+      // success message
       navigate('/login', { state: { message: 'Registration successful! Please log in.' } });
     } else {
-      // If registration fails (e.g., user exists), show the error message
+      // error
       setErrors({ form: result.message });
     }
   };

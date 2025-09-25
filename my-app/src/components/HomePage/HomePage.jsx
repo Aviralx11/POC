@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux'; // 1. Import useDispatch
-import { logout } from '../../redux/slices/authSlice'; // 2. Import the logout action
+import { useDispatch } from 'react-redux'; 
+import { logout } from '../../redux/slices/authSlice'; 
 import './HomePage.css';
 
 import railwayLogo from '../../assets/railway-logo.jpg';
@@ -9,16 +9,16 @@ import heroTrainImage from '../../assets/hero-train.jpg';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // 3. Initialize dispatch
+  const dispatch = useDispatch(); 
 
   const handleBookTicketClick = () => {
     navigate('/book-ticket');
   };
 
-  // 4. Create the handleLogout function
+  
   const handleLogout = () => {
     dispatch(logout());
-    // No need to navigate, the PrivateRoute will automatically redirect to /login
+   
   };
 
   return (

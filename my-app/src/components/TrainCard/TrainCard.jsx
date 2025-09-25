@@ -5,10 +5,10 @@ import './TrainCard.css';
 // functional component that recieves train object as prop
 const TrainCard = ({ train }) => {
   // State to track the index of the item which we have selected
-  // We initialize it to null
+  
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  // Handler for when a user clicks on an item
+
   const handleSelect = (index) => {
     setSelectedIndex(index);
   };

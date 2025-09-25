@@ -25,7 +25,7 @@ const mockStore = configureStore([]);
 describe('LoginPage Component', () => {
   let store;
 
-  // Before each test, create a fresh mock store and clear our spies
+  // for clearing
   beforeEach(() => {
     store = mockStore({}); 
     mockedNavigate.mockClear();
@@ -60,19 +60,19 @@ describe('LoginPage Component', () => {
       </Provider>
     );
 
-    // Act: Click the login button without filling out the form
+    
     const loginButton = screen.getByRole('button', { name: /login/i });
     fireEvent.click(loginButton);
 
     
-    // We use `findByText` because the state update is asynchronous
+    // for asynchronous
     expect(await screen.findByText('Name is required.')).toBeInTheDocument();
     expect(await screen.findByText('Mobile number is required.')).toBeInTheDocument();
     expect(await screen.findByText('Password is required.')).toBeInTheDocument();
   });
 
   it('should show an error for an invalid mobile number format', async () => {
-    // Arrange
+    
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -87,12 +87,12 @@ describe('LoginPage Component', () => {
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
-    // Assert
+    
     expect(await screen.findByText('Mobile number must be exactly 10 digits.')).toBeInTheDocument();
   });
 
   it('should show an error for an invalid password format', async () => {
-    // Arrange
+    
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -127,7 +127,7 @@ describe('LoginPage Component', () => {
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
-    // Assert
+  
     expect(await screen.findByText('Invalid credentials. Please try again.')).toBeInTheDocument();
   });
 
@@ -147,13 +147,13 @@ describe('LoginPage Component', () => {
     fireEvent.change(screen.getByLabelText(/password/i), { target: { value: 'Password123@' } });
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
-    // Assert: Check that the correct Redux action was dispatched
+   
     const actions = store.getActions();
     expect(actions).toHaveLength(1);
     expect(actions[0].type).toBe('auth/loginSuccess');
     expect(actions[0].payload).toEqual({ name: 'Test User' });
 
-    // Assert: Check that navigation to the home page occurred
+
     expect(mockedNavigate).toHaveBeenCalledWith('/');
   });
 });
