@@ -6,7 +6,7 @@ import { loginUser } from '../../utils/userService';
 import './LoginPage.css';
 
 const LoginPage = () => {
-  // 1. Add the 'name' state variable back
+  
   const [name, setName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [password, setPassword] = useState('');
@@ -23,17 +23,17 @@ const LoginPage = () => {
     }
   }, [location]);
 
-  // 2. Update the validation function to include the 'name' field
+  
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = 'Name is required.'; // Add check for name
+    if (!name) newErrors.name = 'Name is required.'; 
     if (!mobileNo) newErrors.mobileNo = 'Mobile number is required.';
     if (!password) newErrors.password = 'Password is required.';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // The handleLogin function remains the same, as 'name' is not used for authentication
+  
   const handleLogin = (e) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -58,7 +58,7 @@ const LoginPage = () => {
 
         {successMessage && <p className="success-message">{successMessage}</p>}
 
-        {/* 3. Add the JSX for the Name input field back into the form */}
+        
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input

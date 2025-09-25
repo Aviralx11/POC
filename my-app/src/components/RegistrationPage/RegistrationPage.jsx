@@ -1,8 +1,7 @@
-// src/components/RegistrationPage/RegistrationPage.jsx (Final Version)
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { registerUser } from '../../utils/userService'; // 1. Import our new function
+import { registerUser } from '../../utils/userService'; 
 import './RegistrationPage.css';
 
 const RegistrationPage = () => {
@@ -11,9 +10,9 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
-  // 2. Add a validation function (similar to LoginPage)
+  
   const validateForm = () => {
     const newErrors = {};
     if (!name) newErrors.name = 'Name is required.';
@@ -33,7 +32,7 @@ const RegistrationPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // 3. Update the handleRegister function
+  
   const handleRegister = (e) => {
     e.preventDefault();
     if (!validateForm()) {
@@ -55,7 +54,7 @@ const RegistrationPage = () => {
     <div className="registration-container">
       <form className="registration-form" onSubmit={handleRegister}>
         <h2>Create Account</h2>
-        {/* The form inputs are the same, just ensure they show errors */}
+
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />

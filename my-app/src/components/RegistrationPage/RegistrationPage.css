@@ -42,7 +42,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  box-sizing: border-box; /* Important for padding */
+  box-sizing: border-box; 
 }
 
 .form-group input:focus {
@@ -56,7 +56,7 @@
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #28a745; /* Green for registration */
+  background-color: #28a745; 
   color: white;
   font-size: 16px;
   font-weight: bold;
